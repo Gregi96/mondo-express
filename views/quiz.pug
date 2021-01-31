@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  if show
+    form(method='post')
+      p Który z kumpli pierwszy się oswiadczy dziewczynie? 
+      ul
+        each item in data
+          li 
+            label=item.title
+            input(type="radio" name='quiz' value=item._id)
+      input(type="submit" value="Zagłosuj")
+      p Aby zobaczyć wyniki oddaj głos
+  else
+    h1 Dokonałes juz głosu w ankiecie
+    p Wyniki
+    ul
+      each item in data
+        li #{item.title} głosów: #{item.vote} (#{~~(item.vote/sum*100)}%)
+
+    p Głosów oddano: #{sum}
+
+    

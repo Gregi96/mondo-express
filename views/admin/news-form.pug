@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h1= title
+
+  //- if errors.errors !== undefined
+  //-   each message in errors.errors
+  //-     p=message
+  
+  if errors.errors !== undefined
+    each message in errors.errors
+      p(class="bad-news")=message
+  //- else 
+  //-   p Dodano news do bazy danych
+
+
+  form(method='post')
+    p
+      label Tytuł
+      input(type='text' name='title' value=body.title || '')
+
+    p
+      label Opis
+      textarea(name="description")=body.description || ''
+    p
+      input(type="submit" value="Dodaj news")
+
+
